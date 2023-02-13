@@ -17,11 +17,13 @@
 ## Summary 目录
 
 * [Spring Cloud Stream RabbitMQ binder示例](docs/spring-initializr-cloud-stream-rabbitmq.md)
+* [Spring Cloud Alibaba RocketMQ Binder示例](docs/spring-initializr-cloud-stream-rocketmq.md)
 * 未完待续...
 
 ## Samples 示例
 
 * [spring-cloud-stream-binder-rabbitmq-demo](samples/spring-cloud-stream-binder-rabbitmq-demo)
+* [spring-cloud-stream-binder-rocketmq-demo](samples/spring-cloud-stream-binder-rocketmq-demo)
 * 未完待续...
 
 

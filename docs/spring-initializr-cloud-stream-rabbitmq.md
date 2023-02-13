@@ -157,7 +157,7 @@ public class DemoApplication {
 
 ## 启动应用
 
-启动应用控制台输出如下内容，则正面启动成功：
+启动应用控制台输出如下内容，则证明启动成功：
 
 ```
 2023-02-09T19:27:23.859+08:00  INFO 20844 --- [           main] c.w.s.c.s.b.r.demo.DemoApplication       : Starting DemoApplication using Java 19.0.2 with PID 20844 (D:\workspace\github\spring-cloud-stream-tutorial\samples\spring-cloud-stream-binder-rabbitmq-demo\target\classes started by wayla in D:\workspace\github\spring-cloud-stream-tutorial\samples\spring-cloud-stream-binder-rabbitmq-demo)
