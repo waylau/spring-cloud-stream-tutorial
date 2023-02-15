@@ -93,8 +93,6 @@
 
 
 ```java
-package com.waylau.spring.cloud.stream.binder.rocketmq.demo;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -153,9 +151,7 @@ public class DemoApplication {
 ## 启动应用
 
 
-先启动RocketMQ服务器后。
-
-而后启动应用，控制台输出如下内容，则证明启动成功：
+先启动RocketMQ服务器，而后启动应用，控制台输出如下内容，则证明启动成功：
 
 ```
 2023-02-13T15:19:20.885+08:00  INFO 29768 --- [           main] c.w.s.c.s.b.r.demo.DemoApplication       : Starting DemoApplication using Java 19.0.2 with PID 29768 (D:\workspace\github\spring-cloud-stream-tutorial\samples\spring-cloud-stream-binder-rocketmq-demo\target\classes started by wayla in D:\workspace\github\spring-cloud-stream-tutorial\samples\spring-cloud-stream-binder-rocketmq-demo)
@@ -188,7 +184,7 @@ public class DemoApplication {
 RocketMQ Dashboard是一个RocketMQ的管理界面，可以获得客户端和应用程序的事件、性能和系统信息的各种图表和统计信息。也可以作为测试工具，用于消息的发送。
 
 
-![](images/rocketmq-topic.jpg)
+![](../images/rocketmq-topic.jpg)
 
 
 
@@ -200,7 +196,7 @@ RocketMQ Dashboard是一个RocketMQ的管理界面，可以获得客户端和应
 {"name":"Sam Spade"}
 ```
 
-![](images/rocketmq-send-msg.jpg)
+![](../images/rocketmq-send-msg.jpg)
 
 
 此时应用就能收到这条消息。

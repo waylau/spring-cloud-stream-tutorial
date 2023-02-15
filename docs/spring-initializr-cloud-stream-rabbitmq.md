@@ -4,7 +4,7 @@
 
 通过[Spring Initializr](https://start.spring.io/)来初始化Spring Cloud Stream应用。
 
-![](images/spring-initializr-rabbitmq.jpg)
+![](../images/spring-initializr-rabbitmq.jpg)
 
 应用的依赖主要是两部分，一个是Spring Cloud Stream，另外一个是具体的MQ产品：
 
@@ -98,8 +98,6 @@
 
 
 ```java
-package com.waylau.spring.cloud.stream.binder.rabbitmq.demo;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -202,7 +200,7 @@ public class DemoApplication {
 {"name":"Sam Spade"}
 ```
 
-![](images/rabbitmq-send-msg.jpg)
+![](../images/rabbitmq-send-msg.jpg)
 
 
 此时应用就能收到这条消息。

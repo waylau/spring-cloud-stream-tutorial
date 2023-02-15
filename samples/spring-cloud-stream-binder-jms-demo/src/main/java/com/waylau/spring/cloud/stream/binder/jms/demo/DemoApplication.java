@@ -1,30 +1,26 @@
-package com.waylau.spring.cloud.stream.binder.activemq.demo;
+package com.waylau.spring.cloud.stream.binder.jms.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.jms.annotation.EnableJms;
-
 
 import java.util.function.Consumer;
-
 
 /**
  * 应用入口
  *
  * @author <a href="https://waylau.com">Way Lau</a>
- * @since 2023-02-14
+ * @since 2023-02-15
  */
 @SpringBootApplication
-@EnableJms
 public class DemoApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	/**
 	 * 消息处理器
-	 *
 	 * @return
 	 */
 	@Bean
@@ -33,15 +29,18 @@ public class DemoApplication {
 			System.out.println("Received: " + person);
 		};
 	}
+
 	public static class Person {
 		private String name;
 
 		public String getName() {
 			return name;
 		}
+
 		public void setName(String name) {
 			this.name = name;
 		}
+
 		public String toString() {
 			return this.name;
 		}
