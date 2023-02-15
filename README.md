@@ -1,12 +1,12 @@
 # Spring Cloud Stream Tutorial. 《跟老卫学Spring Cloud Stream开发》
 
-![](images/jdialects-logo.png)
+![](images/SCSt-with-binder.png)
 
 *Spring Cloud Stream Tutorial*, is a book about how to develop Spring Cloud Stream applications.
 
 
 
-《跟老卫学Spring Cloud Stream开发》是一本 [Spring Cloud Stream](https://gitee.com/drinkjava2/jdialects) 应用开发的开源学习教程，主要介绍如何从0开始开发 Spring Cloud Stream 应用。图文并茂，并通过大量实例带你走近 Spring Cloud Stream 的世界！
+《跟老卫学Spring Cloud Stream开发》是一本 [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream) 应用开发的开源学习教程，主要介绍如何从0开始开发 Spring Cloud Stream 应用。图文并茂，并通过大量实例带你走近 Spring Cloud Stream 的世界！
 
 
 
