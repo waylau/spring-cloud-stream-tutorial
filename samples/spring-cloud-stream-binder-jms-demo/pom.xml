@@ -5,6 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+		<!--spring-boot必须是2.x-->
 		<version>2.7.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
@@ -15,6 +16,7 @@
 	<description>Demo project for Spring Cloud Stream JMS binder</description>
 	<properties>
 		<java.version>17</java.version>
+		<!--spring-cloud必须是2021.x-->
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
 		<spring-cloud-stream-binder-jms.version>1.0.0.RELEASE</spring-cloud-stream-binder-jms.version>
 	</properties>

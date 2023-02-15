@@ -19,9 +19,10 @@
 * [Apache Kafka安装与使用](https://waylau.com/apache-kafka-quickstart/)
 * [Apache RocketMQ安装与使用](https://waylau.com/apache-rocketmq-quickstart/)
 * [Apache ActiveMQ Artemis安装与使用](https://waylau.com/apache-activemq-artemis-quickstart/)
+* [Apache ActiveMQ安装与使用](https://waylau.com/apache-activemq-quickstart/)
 * [Spring Cloud Stream RabbitMQ binder示例](docs/spring-initializr-cloud-stream-rabbitmq.md)
 * [Spring Cloud Alibaba RocketMQ Binder示例](docs/spring-initializr-cloud-stream-rocketmq.md)
-* [Spring Cloud Alibaba JMS binder示例](docs/spring-initializr-cloud-stream-jms.md)
+* [Spring Cloud Stream JMS binder示例](docs/spring-initializr-cloud-stream-jms.md)
 * 未完待续...
 
 ## Samples 示例
