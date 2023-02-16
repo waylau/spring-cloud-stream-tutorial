@@ -30,6 +30,7 @@
 * [spring-cloud-stream-binder-rabbitmq-demo](samples/spring-cloud-stream-binder-rabbitmq-demo)
 * [spring-cloud-stream-binder-rocketmq-demo](samples/spring-cloud-stream-binder-rocketmq-demo)
 * [spring-cloud-stream-binder-jms-demo](samples/spring-cloud-stream-binder-jms-demo)
+* [spring-cloud-stream-binder-artemis-demo](samples/spring-cloud-stream-binder-artemis-demo) (test)
 * 未完待续...
 
 
