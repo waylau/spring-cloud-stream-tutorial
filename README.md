@@ -23,6 +23,7 @@
 * [Spring Cloud Stream RabbitMQ binder示例](docs/spring-initializr-cloud-stream-rabbitmq.md)
 * [Spring Cloud Alibaba RocketMQ Binder示例](docs/spring-initializr-cloud-stream-rocketmq.md)
 * [Spring Cloud Stream JMS binder示例](docs/spring-initializr-cloud-stream-jms.md)
+* [Spring Cloud Stream Kafka binder示例](docs/spring-initializr-cloud-stream-kafka.md)
 * 未完待续...
 
 ## Samples 示例
@@ -31,6 +32,7 @@
 * [spring-cloud-stream-binder-rocketmq-demo](samples/spring-cloud-stream-binder-rocketmq-demo)
 * [spring-cloud-stream-binder-jms-demo](samples/spring-cloud-stream-binder-jms-demo)
 * [spring-cloud-stream-binder-artemis-demo](samples/spring-cloud-stream-binder-artemis-demo) (test)
+* [spring-cloud-stream-binder-kafka-demo](samples/spring-cloud-stream-binder-kafka-demo)
 * 未完待续...
 
 
