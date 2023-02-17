@@ -16,14 +16,23 @@
 
 ## Summary 目录
 
-* [Apache Kafka安装与使用](https://waylau.com/apache-kafka-quickstart/)
-* [Apache RocketMQ安装与使用](https://waylau.com/apache-rocketmq-quickstart/)
-* [Apache ActiveMQ Artemis安装与使用](https://waylau.com/apache-activemq-artemis-quickstart/)
-* [Apache ActiveMQ安装与使用](https://waylau.com/apache-activemq-quickstart/)
-* [Spring Cloud Stream RabbitMQ binder示例](docs/spring-initializr-cloud-stream-rabbitmq.md)
-* [Spring Cloud Alibaba RocketMQ Binder示例](docs/spring-initializr-cloud-stream-rocketmq.md)
-* [Spring Cloud Stream JMS binder示例](docs/spring-initializr-cloud-stream-jms.md)
-* [Spring Cloud Stream Kafka binder示例](docs/spring-initializr-cloud-stream-kafka.md)
+* [Spring Cloud Stream是干啥子的？](docs/preface.md)
+* [快速入门](docs/quick-start.md)
+  * [Apache Kafka安装与使用](https://waylau.com/apache-kafka-quickstart/)
+  * [Apache RocketMQ安装与使用](https://waylau.com/apache-rocketmq-quickstart/)
+  * [Apache ActiveMQ Artemis安装与使用](https://waylau.com/apache-activemq-artemis-quickstart/)
+  * [Apache ActiveMQ安装与使用](https://waylau.com/apache-activemq-quickstart/)
+  * [Spring Cloud Stream Kafka binder示例](docs/spring-initializr-cloud-stream-kafka.md)
+  * [Spring Cloud Stream RabbitMQ binder示例](docs/spring-initializr-cloud-stream-rabbitmq.md)
+  * [Spring Cloud Alibaba RocketMQ Binder示例](docs/spring-initializr-cloud-stream-rocketmq.md)
+  * [Spring Cloud Stream JMS binder示例](docs/spring-initializr-cloud-stream-jms.md)
+* [核心概念](docs/main-concepts.md)
+  * [应用模型](docs/application-model.md)
+  * [Binder抽象](docs/binder-abstraction.md)
+  * [持久发布订阅](docs/persistent-publish-subscribe.md)
+  * [消费者分组](docs/consumer-group.md)
+  * [分区](docs/partitioning.md)
+  * [插件化Binder SPI](docs/binder-spi.md)
 * 未完待续...
 
 ## Samples 示例
