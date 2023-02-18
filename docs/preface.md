@@ -8,7 +8,7 @@ Spring的数据集成之旅始于Spring Integration。通过其编程模型，�
 为了将此扩展到数据集成工作负载，Spring Integration和Spring Boot被合并到一个新项目中——Spring Cloud Stream诞生了。
 
 
-Spring Cloud Stream是一个用于构建消息驱动的微服务应用程序的框架。 Spring Cloud Stream 基于 Spring Boot 构建，以创建独立的生产级 Spring 应用程序，并使用 Spring 集成提供与消息代理的连接。它提供了来自多个供应商的中间件的个性化配置，引入了持久发布订阅语义、消费者分组和分区的概念。
+Spring Cloud Stream是一个用于构建消息驱动的微服务应用程序的框架。 Spring Cloud Stream 基于 Spring Boot 构建，以创建独立的生产级 Spring 应用程序，并使用 Spring 集成提供与消息代理的连接。它提供了来自多个供应商的中间件的个性化配置，引入了持久发布订阅语义、消费者组和分区的概念。
 
 使用Spring Cloud Stream，开发人员可以：
 

@@ -1,0 +1,11 @@
+# Binder抽象
+
+Spring Cloud Stream官方为Kafka和RabbitMQ提供了Binder实现，社区也提供了RocketMQ、ActiveMQ的Binder实现。该框架还包括一个测试用的，用于作为Spring Cloud Stream应用程序对应用程序进行集成测试。
+
+
+Binder抽象也是框架的扩展点之一，这意味着可以在Spring Cloud Stream之上实现自己的Binder。
+
+Spring Cloud Stream使用Spring Boot进行配置，Binder抽象使得Spring Cloud Stream应用程序可以灵活地连接到中间件。例如，部署人员可以在运行时动态选择外部目标（如Kafka  topic或RabbitMQ exchange）与消息处理程序的输入和输出（如函数的输入参数及其返回参数）之间的映射。此类配置可以通过外部配置财产和Spring Boot支持的任何形式（包括应用程序参数、环境变量和application.yml或application.properties文件）提供。‘
+
+
+Spring Cloud Stream会自动检测并使用类路径上的Binder。可以使用具有相同代码的不同类型的中间件。为此，在构建时使用不同的Binder。对于更复杂的用例，还可以将多个绑定器打包到应用程序中，并让应用程序在运行时选择绑定器。

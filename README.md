@@ -30,9 +30,15 @@
   * [应用模型](docs/application-model.md)
   * [Binder抽象](docs/binder-abstraction.md)
   * [持久发布订阅](docs/persistent-publish-subscribe.md)
-  * [消费者分组](docs/consumer-group.md)
+  * [消费者组](docs/consumer-group.md)
   * [分区](docs/partitioning.md)
   * [插件化Binder SPI](docs/binder-spi.md)
+* [编程模型](docs/programming-model.md)
+  * [Destination Binder](docs/destination-binder.md)
+  * [Binding](docs/binding.md)
+  * [消息的生产与消费](docs/producing-and-consuming-message.md)
+  * [事件路由](docs/event-routing.md)
+  * [错误处理](docs/error-handling.md)
 * 未完待续...
 
 ## Samples 示例
