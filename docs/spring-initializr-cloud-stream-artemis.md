@@ -176,6 +176,15 @@ public class DemoApplication {
 ```
 
 
+
+
+
+如上述代码所示：
+
+* 该示例是使用函数式编程模型，将单个消息处理程序定义为Consumer。
+* 自动将传入的消息负载转换为Person类型。
+
+
 ## 添加应用配置
 
 
@@ -194,14 +203,6 @@ spring.cloud.stream.bindings.log-in-0.dlq.destination=queue://ticks
 
 第2、3条配置是用于配置destination，是必选项。其中配置值“queue://ticks”前半部分是用于指示消息的模式是queue还是topic，后半部是对应queue或是topic的名称。本例，自定义了一个名为“ticks”的queue。
 
-
-
-
-
-如上述代码所示：
-
-* 该示例是使用函数式编程模型，将单个消息处理程序定义为Consumer。
-* 自动将传入的消息负载转换为Person类型。
 
 
 ## 启动应用

@@ -19,6 +19,7 @@
 * [Spring Cloud Stream是干啥子的？](docs/preface.md)
 * [快速入门](docs/quick-start.md)
   * [Apache Kafka安装与使用](https://waylau.com/apache-kafka-quickstart/)
+  * [RabbitMQ安装与使用](https://waylau.com/rabbitmq-quickstart/)
   * [Apache RocketMQ安装与使用](https://waylau.com/apache-rocketmq-quickstart/)
   * [Apache ActiveMQ Artemis安装与使用](https://waylau.com/apache-activemq-artemis-quickstart/)
   * [Apache ActiveMQ安装与使用](https://waylau.com/apache-activemq-quickstart/)
@@ -39,15 +40,23 @@
   * [消息的生产与消费](docs/producing-and-consuming-message.md)
   * [事件路由](docs/event-routing.md)
   * [错误处理](docs/error-handling.md)
+* [配置](docs/configuration-option.md)
+  * [Binding服务属性](docs/binding-service-properties.md)
+  * [Binding属性](docs/binding-properties.md)
+* [多Binder（Kafka、RabbitMQ、RocketMQ、ActiveMQ）示例](docs/spring-cloud-stream-muti-binder-kafka-rabbitmq-rocketmq-activemq-demo.md)
+* [动态Destination示例](docs/spring-cloud-stream-dynamic-destination-kafka-demo.md)
+* [问题](docs/issue.md)
 * 未完待续...
 
 ## Samples 示例
 
+* [spring-cloud-stream-binder-kafka-demo](samples/spring-cloud-stream-binder-kafka-demo)
 * [spring-cloud-stream-binder-rabbitmq-demo](samples/spring-cloud-stream-binder-rabbitmq-demo)
 * [spring-cloud-stream-binder-rocketmq-demo](samples/spring-cloud-stream-binder-rocketmq-demo)
 * [spring-cloud-stream-binder-jms-demo](samples/spring-cloud-stream-binder-jms-demo)
 * [spring-cloud-stream-binder-artemis-demo](samples/spring-cloud-stream-binder-artemis-demo) (test)
-* [spring-cloud-stream-binder-kafka-demo](samples/spring-cloud-stream-binder-kafka-demo)
+* [spring-cloud-stream-muti-binder-kafka-rabbitmq-rocketmq-activemq-demo](samples/spring-cloud-stream-muti-binder-kafka-rabbitmq-rocketmq-activemq-demo)
+* [spring-cloud-stream-dynamic-destination-kafka-demo](samples/spring-cloud-stream-dynamic-destination-kafka-demo)
 * 未完待续...
 
 
