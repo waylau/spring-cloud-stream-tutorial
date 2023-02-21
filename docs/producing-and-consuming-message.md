@@ -164,7 +164,7 @@ public Function<Flux<?>, Mono<Void>>consumer() {
 #### 轮询配置属性
 
 
-以下属性由Spring Cloud Stream公开，并以Spring.integration.poller作为前缀：
+以下属性由Spring Cloud Stream公开，并以spring.integration.poller作为前缀：
 
 
 * fixedDelay：默认轮询器的固定延迟（毫秒）。默认值：1000L。
@@ -181,7 +181,7 @@ public Function<Flux<?>, Mono<Void>>consumer() {
 
 上一节介绍了如何配置将应用于所有binding的单个默认轮询器。虽然它很适合微服务的模型，即为每个微服务代表单个组件（例如，Supplier）而设计的Spring Cloud Stream，因此默认轮询器配置就足够了，但在某些边缘情况下，可能有几个组件需要不同的轮询配置。
 
-对于这种情况，请使用为每个binding配置轮询器。例如，假设您有一个 binding “supply-out-0”。在这种情况下，可以使用“spring.cloud.stream.bindings.supply-out-0.producer.poller..”前缀为此类绑定配置轮询器。以下是一个示例：
+对于这种情况，请使用为每个binding配置轮询器。例如，假设您有一个 binding “supply-out-0”。在这种情况下，可以使用“spring.cloud.stream.bindings.supply-out-0.producer.poller.”前缀为此类绑定配置轮询器。以下是一个示例：
 
 ```
 spring.cloud.stream.bindings.supply-out-0.producer.poller.fixed-delay=2000
@@ -720,16 +720,6 @@ public class FunctionSampleSpringIntegrationApplication {
 
 ## 使用轮询消费者
 
-
-When using polled consumers, you poll the PollableMessageSource on demand. To define binding for polled consumer you need to provide spring.cloud.stream.pollable-source property.
-
-Consider the following example of a polled consumer binding:
-
---spring.cloud.stream.pollable-source=myDestination
-
-The pollable-source name myDestination in the preceding example will result in myDestination-in-0 binding name to stay consistent with functional programming model.
-
-Given the polled consumer in the preceding example, you might use it as follows:
 
 使用轮询消费者时，可以按需轮询PolableMessageSource。要为轮询消费者定义binding，需要提供`spring.cloud.stream.pollable-source`属性。
 

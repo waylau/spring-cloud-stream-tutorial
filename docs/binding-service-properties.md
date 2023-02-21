@@ -2,8 +2,7 @@
 
 这些属性通过`org.springframework.cloud.stream.config.BindingServiceProperties`公开。
 
-* spring.cloud.stream.instanceCount：应用程序的已部署实例数。必须为生产者侧的分区设置。当使用RabbitMQ和Kafka时，如果`autoRebalanceEnabled=false`，则必须在消费者侧设置。
-默认值：1。
+* spring.cloud.stream.instanceCount：应用程序的已部署实例数。必须为生产者侧的分区设置。当使用RabbitMQ和Kafka时，如果`autoRebalanceEnabled=false`，则必须在消费者侧设置。默认值：1。
 * spring.cloud.stream.instanceIndex：应用程序的实例索引：从0到instanceCount-1的数字。如果`autoRebalanceEnabled=false`，则用于RabbitMQ和Kafka的分区。在Cloud Foundry中自动设置以匹配应用程序的实例索引。
 * spring.cloud.stream.dynamicDestinations：可以动态绑定的destination列表（例如，在动态路由方案中）。如果设置，则只能绑定列出的destination。默认值：空（允许绑定任何destination）。
 * spring.cloud.stream.defaultBinder：如果配置了多个Binder，则使用默认Binder。默认值：空。
