@@ -203,14 +203,14 @@ spring.cloud.stream.defaultBinder=jms
 如果是启用ActiveMQ binder，还需要有以下配置：
 
 ```
-####### start: 针对ActiveMQ 特殊处理 ##############
-# ActiveMQ 取消使用内存broker
+####### start: ActiveMQ 特有配置 #######
+# 是否使用内嵌ActiveMQ。正式项目选false
 spring.activemq.in-memory=false
 
-# destination
+# 必须配置destination，值是以“queue://”或“topic://”开头
 spring.cloud.stream.bindings.log-in-0.destination=queue://ticks
 spring.cloud.stream.bindings.log-in-0.dlq.destination=queue://ticks
-####### end: 针对ActiveMQ 特殊处理 ##############
+####### end:  ActiveMQ 特有配置 #######
 ```
 
 
