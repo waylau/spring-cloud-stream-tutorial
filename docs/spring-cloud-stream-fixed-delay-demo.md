@@ -225,23 +225,7 @@ spring.cloud.stream.bindings.supplier-out-0.producer.poller.fixed-delay=3000
 
 ## 测试
 
-应用启动，可以看到控制台输出如下：
-
-
-```
-Received personList: [Sam Spade, Sam Po, Sam Li]
-Received: Sam Spade
-Received: Sam Po
-Received: Sam Li
-Received personList: [Sam Bo, Way Lau, Fei Po, Gu Li]
-Received: Sam Bo
-Received: Way Lau
-Received: Fei Po
-Received: Gu Li
-```
-
-
-可以看到，log()接收到了消息。
+应用启动，可以看到，log()接收到了消息控制台输出如下：
 
 ```
 Received: Sam Spade0, 10:07:43.103968900
@@ -256,6 +240,7 @@ Received: Sam Spade7, 10:08:02.288192400
 
 
 除了第1条和第2条间隔上面有点偏差之外，其他的消息都是按照3秒为间隔发送的。
+Kafka这种偏差估计是内部的定时器启动时机的问题引起，RocketMQ也有类似的问题。RabbitMQ和ActiveMQ没有这种问题。
 
 
 
