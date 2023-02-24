@@ -64,6 +64,8 @@
 * [多Binder（Kafka、RabbitMQ、RocketMQ、ActiveMQ）示例](docs/spring-cloud-stream-muti-binder-kafka-rabbitmq-rocketmq-activemq-demo.md)
 * [动态Destination示例](docs/spring-cloud-stream-dynamic-destination-kafka-demo.md)
 * [Spring Cloud Stream概念与其他中间件的映射关系](docs/main-concepts-map.md)
+* [批量处理示例](docs/spring-cloud-stream-batch-demo.md)
+* [延迟消息示例](docs/spring-cloud-stream-fixed-delay-demo.md)
 * [问题](docs/issue.md)
 * 未完待续...
 
@@ -76,6 +78,8 @@
 * [spring-cloud-stream-binder-artemis-demo](samples/spring-cloud-stream-binder-artemis-demo) (test)
 * [spring-cloud-stream-muti-binder-kafka-rabbitmq-rocketmq-activemq-demo](samples/spring-cloud-stream-muti-binder-kafka-rabbitmq-rocketmq-activemq-demo)
 * [spring-cloud-stream-dynamic-destination-kafka-demo](samples/spring-cloud-stream-dynamic-destination-kafka-demo)
+* [spring-cloud-stream-batch-demo](samples/spring-cloud-stream-batch-demo)
+* [spring-cloud-stream-fixed-delay-demo](samples/spring-cloud-stream-fixed-delay-demo)
 * 未完待续...
 
 

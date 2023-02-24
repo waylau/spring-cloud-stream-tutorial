@@ -10,10 +10,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.waylau.spring.cloud.stream.binder.jms</groupId>
-	<artifactId>spring-cloud-stream-batch-demo</artifactId>
+	<artifactId>spring-cloud-stream-fixed-delay-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-cloud-stream-batch-demo</name>
-	<description>Batch demo for Spring Cloud Stream</description>
+	<name>spring-cloud-stream-fixed-delay-demo</name>
+	<description>Fixed Delay demo for Spring Cloud Stream</description>
 	<properties>
 		<java.version>17</java.version>
 		<!--spring-cloud必须是2021.x-->

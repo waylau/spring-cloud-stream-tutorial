@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -18,7 +19,7 @@ import java.util.function.Consumer;
  */
 @SpringBootApplication
 public class DemoApplication {
-    private final static List<Person> PERSON_LIST = List.of(
+    private final static List<Person> PERSON_LIST = Arrays.asList(
             new Person("Sam Spade"),
             new Person("Sam Po"),
             new Person("Sam Li"),

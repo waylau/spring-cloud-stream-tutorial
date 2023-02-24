@@ -183,7 +183,7 @@ Caused by: com.alibaba.fastjson.JSONException: expect '[', but {, pos 1, line 1,
 ```
 
 
-## RocketMQ binder batch mode com.alibaba.fastjson.JSONException: offset 1, character {
+## RocketMQ binder batch mode com.alibaba.fastjson.JSONException: offset 1, character {, line 1, column 2, fastjson-version 2.0.24
 
 暂不支持批量消费，fastjson解析报错。
 
@@ -234,4 +234,7 @@ Caused by: com.alibaba.fastjson2.JSONException: offset 1, character {, line 1, c
 	at com.alibaba.fastjson.JSON.parseObject(JSON.java:766)
 	... 33 more
 ```
+
+已经向社区反馈了： <https://github.com/alibaba/spring-cloud-alibaba/issues/3172>
+
 
