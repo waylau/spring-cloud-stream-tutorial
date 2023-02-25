@@ -66,6 +66,8 @@
 * [Spring Cloud Stream概念与其他中间件的映射关系](docs/main-concepts-map.md)
 * [批量处理示例](docs/spring-cloud-stream-batch-demo.md)
 * [延迟消息示例](docs/spring-cloud-stream-fixed-delay-demo.md)
+* [常用配置](docs/frequently-used-configurations.md)
+* [分区示例](docs/spring-cloud-stream-partitioning-demo.md)
 * [问题](docs/issue.md)
 * 未完待续...
 
@@ -80,6 +82,7 @@
 * [spring-cloud-stream-dynamic-destination-kafka-demo](samples/spring-cloud-stream-dynamic-destination-kafka-demo)
 * [spring-cloud-stream-batch-demo](samples/spring-cloud-stream-batch-demo)
 * [spring-cloud-stream-fixed-delay-demo](samples/spring-cloud-stream-fixed-delay-demo)
+* [spring-cloud-stream-partitioning-demo](samples/spring-cloud-stream-partitioning-demo)
 * 未完待续...
 
 

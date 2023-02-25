@@ -1,27 +1,17 @@
-# 延迟消息示例
+# 分区示例
 
-延迟消息（Delay Message）是RabbitMQ、RocketMQ里面的概念。虽然Kafka原生不支持延迟消息，但Spring Cloud Stream通过了定时轮询的方式，提供了延迟消息的功能。
+分区是有状态处理中的一个关键概念，它对于确保所有相关数据一起处理至关重要（无论是出于性能还是一致性原因）。例如，在时间窗平均计算示例中，来自任何给定传感器的所有测量值都由同一应用实例处理是很重要的。
 
 
-全局配置：
-
-```
-spring.integration.poller.fixed-delay=2000
-```
-
-特定binding配置：
-
-```
-spring.cloud.stream.bindings.supply-out-0.producer.poller.fixed-delay=2000
-```
-
+Spring Cloud Stream为以统一的方式实现分区处理用例提供了一个通用的抽象。因此，无论 broker 本身是否自然分区（例如Kafka是有分区的，而RabbitMQ是没有分区的），都可以使用分区。
 
 
 
 ## 初始化应用
 
 
-初始化应用，pom.xml中添加Kafka Binder。为了方便测试，我把Kafka、RabbitMQ、RocketMQ、JMS这四个Binder都加入了：
+
+初始化应用pom.xml中添加Kafka Binder。为了方便测试，我把Kafka、RabbitMQ、RocketMQ、JMS这四个Binder都加入了：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,10 +26,10 @@ spring.cloud.stream.bindings.supply-out-0.producer.poller.fixed-delay=2000
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.waylau.spring.cloud.stream.binder.jms</groupId>
-	<artifactId>spring-cloud-stream-fixed-delay-demo</artifactId>
+	<artifactId>spring-cloud-stream-partitioning-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-cloud-stream-fixed-delay-demo</name>
-	<description>Fixed Delay demo for Spring Cloud Stream</description>
+	<name>spring-cloud-stream-partitioning-demo</name>
+	<description>Partitioning demo for Spring Cloud Stream</description>
 	<properties>
 		<java.version>17</java.version>
 		<!--spring-cloud必须是2021.x-->
@@ -125,27 +115,26 @@ spring.cloud.stream.bindings.supply-out-0.producer.poller.fixed-delay=2000
 
 
 ```java
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
 
-import java.time.LocalTime;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * 批量消费与生产
+ * 分区
  *
  * @author <a href="https://waylau.com">Way Lau</a>
  * @since 2023-02-24
  */
 @SpringBootApplication
 public class DemoApplication {
-
-    @Autowired
-    private StreamBridge bridge;
+    // 自定义分区头标
+    private static final String PARTITION_KEY = "partitionKey";
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
@@ -157,9 +146,17 @@ public class DemoApplication {
      * 发送消息
      */
     @Bean
-    public Supplier<Person> supplier() {
+    public Supplier<Message<Person>> supplier() {
         return () -> {
-            return new Person("Sam Spade" + (id++));
+            int msgId = id;
+            Person person = new Person("Sam Spade " + id);
+            id++;
+
+            // 求模运算生成分区key，个位数相同的msgId放到同一个分区
+            int key = msgId % 10;
+            return MessageBuilder.withPayload(person)
+                    .setHeader(PARTITION_KEY, key)
+                    .build();
         };
     }
 
@@ -169,15 +166,19 @@ public class DemoApplication {
      * @return
      */
     @Bean
-    public Consumer<Person> log() {
-        return person -> {
+    public Consumer<Message<Person>> log() {
+        return message -> {
+            Person person = message.getPayload();
+            MessageHeaders headers = message.getHeaders();
+
             // 打印出接收到的消息
-            System.out.println("Received: " + person + ", " + LocalTime.now());
+            System.out.println("partition: " + headers.get(PARTITION_KEY) + "; " + person);
         };
     }
 
     public static class Person {
         private String name;
+
 
         public Person() {
 
@@ -204,9 +205,10 @@ public class DemoApplication {
 
 如上述代码所示：
 
-* supplier()用于在应用启动时发送测试消息。为了便于观察数据，在消息里面加了自增的id。
-* log()用于处理单条消息。
 
+* supplier()用于在应用启动时发送测试消息。为了便于观察数据，在消息里面加了自增的id。
+* 求模运算生成分区key，个位数相同的msgId放到同一个分区。分区标识放置在MessageHeaders里面。
+* log()用于处理单条消息。
 
 
 ## 应用配置
@@ -223,37 +225,58 @@ spring.cloud.function.definition=log;supplier
 
 spring.cloud.stream.bindings.log-in-0.group=logGroup
 spring.cloud.stream.bindings.log-in-0.destination=logDestination
-
 spring.cloud.stream.bindings.supplier-out-0.destination=logDestination
 
-# 延迟发送消息，3秒
-spring.cloud.stream.bindings.supplier-out-0.producer.poller.fixed-delay=3000
+# 消费者使用分区及并发数
+spring.cloud.stream.bindings.log-in-0.consumer.partitioned=true
+spring.cloud.stream.default.consumer.concurrency=10
+
+# 分区规则及分区数
+spring.cloud.stream.bindings.supplier-out-0.producer.partitionKeyExpression=headers['partitionKey']
+spring.cloud.stream.bindings.supplier-out-0.producer.partitionCount=10
+spring.cloud.stream.bindings.supplier-out-0.producer.required-groups=logGroup
 ```
 
-其中，fixed-delay就是作用在supplier()这个函数上，实现每间隔3秒就发送一次消息。
+
+其中，partitionKeyExpression是分区表达式，分区规则取自MessageHeaders的“partitionKey”标识。
+
 
 
 ## 测试
 
+
 应用启动，可以看到，log()接收到了消息控制台输出如下：
 
 ```
-Received: Sam Spade0, 10:07:43.103968900
-Received: Sam Spade1, 10:07:44.228530800
-Received: Sam Spade2, 10:07:47.245681600
-Received: Sam Spade3, 10:07:50.267271900
-Received: Sam Spade4, 10:07:53.257599700
-Received: Sam Spade5, 10:07:56.270057900
-Received: Sam Spade6, 10:07:59.286673800
-Received: Sam Spade7, 10:08:02.288192400
+partition: 0; Sam Spade 0
+partition: 1; Sam Spade 1
+partition: 2; Sam Spade 2
+partition: 3; Sam Spade 3
+partition: 4; Sam Spade 4
+partition: 5; Sam Spade 5
+partition: 6; Sam Spade 6
+partition: 7; Sam Spade 7
+partition: 8; Sam Spade 8
+partition: 9; Sam Spade 9
+partition: 0; Sam Spade 10
+partition: 1; Sam Spade 11
+partition: 2; Sam Spade 12
+partition: 3; Sam Spade 13
+partition: 4; Sam Spade 14
+partition: 5; Sam Spade 15
+partition: 6; Sam Spade 16
+partition: 7; Sam Spade 17
+partition: 8; Sam Spade 18
+partition: 9; Sam Spade 19
+partition: 0; Sam Spade 20
+partition: 1; Sam Spade 21
 ```
 
+可以看到数据是从对应的分区里面取出的。
 
-除了第1条和第2条间隔上面有点偏差之外，其他的消息都是按照3秒为间隔发送的。
-Kafka这种偏差估计是内部的定时器启动时机的问题引起，RocketMQ也有类似的问题。RabbitMQ和ActiveMQ没有这种问题。
 
 
 
 ## 源码
 
-本节示例见`spring-cloud-stream-fixed-delay-demo`。
+本节示例见`spring-cloud-stream-partitioning-demo`。
