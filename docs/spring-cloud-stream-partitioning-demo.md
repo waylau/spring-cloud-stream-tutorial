@@ -245,7 +245,24 @@ spring.cloud.stream.bindings.supplier-out-0.producer.required-groups=logGroup
 ## 测试
 
 
-应用启动，可以看到，log()接收到了消息控制台输出如下：
+应用启动，可以看到，生产者已经关联到了10个分区：
+
+```
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-0 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-5 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-8 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-2 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-9 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-1 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-4 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-6 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-7 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.056  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition logDestination-3 to 0 since the associated topicId changed from null to QhDguN0wTo-iyqpJ_X8kMQ
+2023-02-25 16:11:02.057  INFO 27160 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: UUJYi6IdSt6zT_TPdwtGww
+```
+
+
+log()接收到了消息，控制台输出如下：
 
 ```
 partition: 0; Sam Spade 0
