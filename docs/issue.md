@@ -238,3 +238,70 @@ Caused by: com.alibaba.fastjson2.JSONException: offset 1, character {, line 1, c
 已经向社区反馈了： <https://github.com/alibaba/spring-cloud-alibaba/issues/3172>
 
 
+
+
+## “java.lang.UnsupportedClassVersionError”问题。
+
+```
+java.lang.UnsupportedClassVersionError: com/alibaba/cloud/stream/binder/rocketmq/autoconfigurate/RocketMQBinderAutoConfiguration has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+```
+
+
+### 原因
+
+查了下JDK版本不兼容的引起的。
+
+目前测试环境是JDK 1.8，而 spring-cloud-starter-stream-rocketmq 这个binder 当时选的是 “2022.0.0.0-RC1”，要求JDK为 JDK 17，而spring-cloud-stream-binder-jms 这个binder 要求是 JDK11。
+
+
+### 解决思路
+
+spring-cloud-starter-stream-rocketmq 这个binder 可以降为 2021.1 版本以兼容JDK 1.8，但spring-cloud-stream-binder-jms 这个binder目前要求的最低版本就是JDK 11，所以考虑下以下方案。
+
+
+#### 方法1：环境升级到JDK 11
+
+测试环境先升级到JDK 11。
+
+风险：可能平台的其他代码又存在兼容性的问题。需要项目组花时间再投入测试。
+
+
+
+#### 方法2：去掉  spring-cloud-stream-binder-jms 
+
+因为spring-cloud-stream-binder-jms 这个binder目前要求的最低版本就是JDK 11，所以，如果测试环境来不及升级的话，建议是先去掉这个 binder（先不测ActiveMQ）
+等到后续测试环境先升级到JDK 11再纳入这个binder。
+
+因为技术预研的年度工作里面本身就规划有“JDK升级”这个工作，可能等这个工作完成了，再继续测试 spring-cloud-stream-binder-jms 这个binder。
+
+
+
+
+## Rocket平台报“No route info of this topic”
+
+
+我查了下可能有几个原因。
+
+1、Rocket 没有启用自动创建Topic 。需要设置  autoCreateTopicEnable=true
+2、防火墙问题。需要开放端口 9876 10911 10912  10909
+
+
+mqbroker -n localhost:9876 &
+
+
+9876 是 nameserver的
+10911，10912，10909 是broker 的
+
+
+
+```
+RocketmqRemoting.info:95 -closeChannel: close the connection to remote address[] result: true
+```
+
+
+spring.cloud.stream.rocketmq.bindings.consumer.enable = false
+spring.cloud.stream.rocketmq.bindings.producer.enable = false
+
+
+spring.cloud.stream.rocketmq.bindings.log-in-0.consumer.enable = false
+spring.cloud.stream.rocketmq.bindings.log-in-0.producer.enable = false
